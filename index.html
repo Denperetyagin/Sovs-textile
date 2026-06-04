@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Индустриальные Текстильные Решения | Производство полного цикла</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0f1115;
+            --bg-card: #161920;
+            --accent-blue: #2563eb;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border-color: #262b36;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background-color: rgba(15, 17, 21, 0.9);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 0.1rem;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        .hero {
+            padding: 160px 0 80px 0;
+            background: linear-gradient(180deg, rgba(22,25,32,0.5) 0%, rgba(15,11,21,0) 100%);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            background-color: var(--border-color);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            line-height: 1.1;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero-text {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+            max-width: 500px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 14px 28px;
+            background-color: var(--text-main);
+            color: var(--bg-dark);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: opacity 0.3s;
+        }
+
+        .cta-button:hover {
+            opacity: 0.9;
+        }
+
+        /* Одно крупное фото на главном экране */
+        .hero-image-grid {
+            display: block; /* Убираем сетку, теперь здесь один элемент */
+            width: 100%;
+        }
+
+        .hero-image-grid img {
+            width: 100%;
+            height: 480px; /* Здесь вы можете настроить высоту: например, 450px, 500px или оставить 480px */
+            object-fit: cover; /* Картинка красиво заполнит пространство без искажения пропорций */
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+
+        .section-padding {
+            padding: 80px 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+        }
+
+        .comp-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .comp-card {
+            background-color: var(--bg-card);
+            padding: 40px 30px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+
+        .comp-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .comp-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .triggers-bar {
+            display: flex;
+            justify-content: space-between;
+            background-color: var(--bg-card);
+            padding: 25px 40px;
+            border-radius: 6px;
+            margin-top: 50px;
+            border: 1px solid var(--border-color);
+        }
+
+        .trigger-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05rem;
+        }
+
+        .trigger-item::before {
+            content: "✓";
+            color: var(--text-main);
+            font-weight: bold;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .product-card {
+            background-color: var(--bg-card);
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            background-color: #1e222b;
+        }
+
+        .product-info {
+            padding: 35px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .product-info p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .product-meta {
+            margin-bottom: 25px;
+        }
+
+        .meta-line {
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .meta-line span {
+            color: var(--text-muted);
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            background-color: var(--bg-dark);
+            padding: 4px 10px;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .product-price-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .price-from {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .price-from span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .footer-bg {
+            background-color: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+            padding: 80px 0;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .form-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .form-info p {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        .info-contact {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .info-contact span {
+            color: var(--text-muted);
+            display: block;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 0.05rem;
+        }
+
+        input, select, textarea {
+            background-color: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            padding: 14px;
+            border-radius: 4px;
+            color: var(--text-main);
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: rgba(255,255,255,0.3);
+        }
+
+        .submit-btn {
+            background-color: var(--text-main);
+            color: var(--bg-dark);
+            border: none;
+            padding: 16px;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.05rem;
+            transition: opacity 0.3s;
+        }
+
+        .submit-btn:hover {
+            opacity: 0.9;
+        }
+
+        @media (max-width: 968px) {
+            .hero-grid, .comp-grid, .products-grid, .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-image-grid {
+                order: -1;
+            }
+            .triggers-bar {
+                flex-direction: column;
+                gap: 15px;
+            }
+            h1 { font-size: 2.3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-flex">
+            <div class="logo">НАЗВАНИЕ <span>| ТЕКСТИЛЬ</span></div>
+            <nav class="nav-links">
+                <a href="#competences">Компетенции</a>
+                <a href="#catalog">Продукция</a>
+                <a href="#order">Оставить заявку</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-grid">
+            <div>
+                <span class="badge">Индустриальные текстильные решения</span>
+                <h1>Профессиональное швейное производство полного цикла</h1>
+                <p class="hero-text">Разрабатываем и выпускаем под ключ: технологичный корпоративный мерч, сублимационную спортивную форму, уличную и промо-одежду для B2B сегмента.</p>
+                <a href="#catalog" class="cta-button">Смотреть каталог продукции</a>
+            </div>
+            <div class="hero-image-grid">
+                <img src="shapkaa.jpg" alt="Швейный автомат">
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="competences">
+        <div class="container">
+            <h2 class="section-title">Компетенции производства</h2>
+            <div class="comp-grid">
+                <div class="comp-card">
+                    <h3>Конструкторский цех</h3>
+                    <p>Профессиональная оцифровка лекал, точная разработка градации изделий по размерам и ростам под ваши стандарты.</p>
+                </div>
+                <div class="comp-card">
+                    <h3>Печатный комплекс</h3>
+                    <p>Широкий спектр промышленного нанесения: высокоточная сублимация, DTF-печать, надежная шелкография и компьютерная вышивка.</p>
+                </div>
+                <div class="comp-card">
+                    <h3>Швейные мощности</h3>
+                    <p>Высокотехнологичный парк оборудования, включая современные шаблонные автоматы для безупречной геометрии швов.</p>
+                </div>
+            </div>
+            
+            <div class="triggers-bar">
+                <div class="trigger-item">Контроль ОТК</div>
+                <div class="trigger-item">Собственные лекала</div>
+                <div class="trigger-item">Сертификация продукции</div>
+                <div class="trigger-item">Система «Честный Знак»</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding" id="catalog">
+        <div class="container">
+            <h2 class="section-title">Направления продукции</h2>
+            <div class="products-grid">
+                
+                <div class="product-card">
+                    <img src="fotbolka.png" class="product-img" alt="Футболки и поло">
+                    <div class="product-info">
+                        <div>
+                            <h3>Футболки и поло</h3>
+                            <p>Идеальная основа для вашего мерча и промо-одежды с проработанными деталями кроя.</p>
+                            <div class="product-meta">
+                                <div class="meta-line">● <span>Горловина:</span> Обработана мягкой эластичной рибаной или V-вырез внахлест</div>
+                                <div class="meta-line">● <span>Классическое поло:</span> Плотный воротник со стойкой, планка на 2-3 пуговицы</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="tech-tags">
+                                <span class="tag">Вышивка</span><span class="tag">DTF-Печать</span><span class="tag">Шелкография</span>
+                            </div>
+                            <div class="product-price-box">
+                                <div class="price-from">от 1 800 ₽ <span>/ шт.</span></div>
+                                <div class="tag" style="color:#fff;">5-10 дней</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="hoodies.png" class="product-img" alt="Толстовки и худи">
+                    <div class="product-info">
+                        <div>
+                            <h3>Толстовки и свитшоты</h3>
+                            <p>Удобный и теплый оверсайз или классический крой для повседневной носки и корпоративной среды.</p>
+                            <div class="product-meta">
+                                <div class="meta-line">● <span>Худи:</span> Объемный двойной капюшон, плоские шнуры, карман-кенгуру</div>
+                                <div class="meta-line">● <span>Детали:</span> Прочные молнии, защита подбородка, манжеты из плотного кашкорсе</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="tech-tags">
+                                <span class="tag">Футер 3-х нитка</span><span class="tag">Начес</span><span class="tag">Пенье</span>
+                            </div>
+                            <div class="product-price-box">
+                                <div class="price-from">от 2 300 ₽ <span>/ шт.</span></div>
+                                <div class="tag" style="color:#fff;">5-10 дней</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="suits.png" class="product-img" alt="Спортивные костюмы">
+                    <div class="product-info">
+                        <div>
+                            <h3>Спортивные костюмы и брюки</h3>
+                            <p>Разработка и пошив эргономичных костюмов для активных тренировок и повседневных прогулок.</p>
+                            <div class="product-meta">
+                                <div class="meta-line">● <span>Верх:</span> Олимпийки и бомберы, надежные молнии SBS, прорезные карманы</div>
+                                <div class="meta-line">● <span>Брюки:</span> Пнямой/зауженный крой, пояс со скрытым шнуром, кастомизация лампасами</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="tech-tags">
+                                <span class="tag">Матовый бифлекс</span><span class="tag">Сэндвич Браш</span><span class="tag">Светоотражатели</span>
+                            </div>
+                            <div class="product-price-box">
+                                <div class="price-from">от 2 100 ₽ <span>/ брюки</span></div>
+                                <div class="tag" style="color:#fff;">5-10 дней</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="jackets.png" class="product-img" alt="Верхняя одежда">
+                    <div class="product-info">
+                        <div>
+                            <h3>Ветровки, куртки и жилеты</h3>
+                            <p>Технологичная верхняя экипировка для промо-команд, курьерских служб и корпоративных нужд.</p>
+                            <div class="product-meta">
+                                <div class="meta-line">● <span>Защита:</span> Свободный анатомический крой, проклеенные швы от ливней и ветра</div>
+                                <div class="meta-line">● <span>Жилеты:</span> Кастомный стеганый узор (ромбы, волна), утеплитель Альполюкс</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="tech-tags">
+                                <span class="tag">Мембрана</span><span class="tag">Оксфорд</span><span class="tag">Дюспо</span>
+                            </div>
+                            <div class="product-price-box">
+                                <div class="price-from">По запросу <span>/ расчет стоимости</span></div>
+                                <div class="tag" style="color:#fff;">5-10 дней</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="sports.png" class="product-img" alt="Игровая форма">
+                    <div class="product-info">
+                        <div>
+                            <h3>Профессиональная игровая форма</h3>
+                            <p>Экипировка футбольных, хоккейных, баскетбольных команд с износостойким сублимационным нанесением.</p>
+                            <div class="product-meta">
+                                <div class="meta-line">● <span>Хоккей:</span> Сверхпрочная сетка (220-250 г), анатомический крой под защиту</div>
+                                <div class="meta-line">● <span>Футбол/Баскетбол:</span> Дышащие материалы Prime Cool & Dry и сетка Олимп</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="tech-tags">
+                                <span class="tag">Вечная сублимация</span><span class="tag">Номера в крое</span><span class="tag">Яркие цвета</span>
+                            </div>
+                            <div class="product-price-box">
+                                <div class="price-from">По запросу <span>/ под команду</span></div>
+                                <div class="tag" style="color:#fff;">5-10 дней</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="flag.png" class="product-img" alt="Флаги и мерч">
+                    <div class="product-info">
+                        <div>
+                            <h3>Флаги, уличные виндеры и промо-текстиль</h3>
+                            <p>Изготовление всех типов рекламной флажной продукции и премиальных текстильных B2B сувениров.</p>
+                            <div class="product-meta">
+                                <div class="meta-line">● <span>Флаги:</span> Мобильные виндеры «Парус», «Капля», «Флекс» высотой от 2 до 6 метров</div>
+                                <div class="meta-line">● <span>Аксессуары:</span> Эко-шопперы, подарочные мешочки, мягкие флисовые пледы</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="tech-tags">
+                                <span class="tag">Флажная сетка</span><span class="tag">Блэкаут</span><span class="tag">Сатен / Флис</span>
+                            </div>
+                            <div class="product-price-box">
+                                <div class="price-from">По запросу <span>/ тираж</span></div>
+                                <div class="tag" style="color:#fff;">Спецзаказ</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="footer-bg" id="order">
+        <div class="container form-grid">
+            <div class="form-info">
+                <h2>Давайте создадим уникальный проект</h2>
+                <p>Свяжитесь с нами для детального расчета стоимости вашего тиража, подбора технологичных тканей и обсуждения условий производства полного цикла.</p>
+                
+                <div class="info-contact">
+                    <span>Сроки производства</span>
+                    5–10 рабочих дней
+                </div>
+                <div class="info-contact">
+                    <span>Email для ТЗ и лекал</span>
+                    b2b@yourproduction.ru
+                </div>
+            </div>
+            <div>
+                <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Спасибо за заявку! Наш менеджер свяжется с вами для расчета стоимости.');">
+                    <div class="form-group">
+                        <label for="name">Ваше имя / Компания</label>
+                        <input type="text" id="name" required placeholder="Иван Иванович, ООО Лидер">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone" required placeholder="+7 (999) 000-00-00">
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Тип продукции</label>
+                        <select id="category">
+                            <option value="shirts">Футболки и поло</option>
+                            <option value="hoodies">Толстовки и свитшоты</option>
+                            <option value="sport">Спортивная / Игровая форма</option>
+                            <option value="outerwear">Ветровки и жилеты</option>
+                            <option value="promo">Флаги, шопперы, аксессуары</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Детали заказа (тираж, ткань, нанесение)</label>
+                        <textarea id="message" rows="4" placeholder="Например: Футболки поло из серого пике, тираж 150 шт, нанесение — компьютерная вышивка на груди..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Отправить запрос на расчет</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
